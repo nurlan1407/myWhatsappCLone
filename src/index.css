@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --background-color:#1F2C32;
+    --input-color:#28373E;
+    --primary-color:white
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color:var(--primary-color)
+}
+
+.wrapper{
+    margin: 20px auto;
+}

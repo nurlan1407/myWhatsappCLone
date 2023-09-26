@@ -1,24 +1,16 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import './index.scss'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { LoginPage } from 'pages/Login'
-import { RegisterPage } from 'pages/Register'
+import './index.css'
+import Authorization from 'pages/Authorization/ui/Authorization'
+import { BrowserRouter,Routes, Route } from 'react-router-dom'
 
 const root = document.getElementById('root')
 ReactDom.render(
-
     <BrowserRouter>
-    <div className='app'>
         <Routes>
-            <Route path="register" element={<RegisterPage />}></Route>
-            <Route path="login" element={<LoginPage />}></Route>
-            {/* <Route path=""></Route>
-        <Route path="register"></Route> */}
+            <Route path='auth' element={<Authorization/>}/>
         </Routes>
-        </div>
     </BrowserRouter>
-
     ,
     root
 )

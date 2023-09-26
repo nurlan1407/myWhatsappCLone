@@ -18,40 +18,30 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
     exclude: /node_modules/
   }
   // const styleLoader = {
-  //     test: /\.s[ac]ss$/i,
-  //     use: [
-
-  //         // Creates `style` nodes from JS strings
-  //       options.isDev?"style-loader":MiniCssExtractPlugin.loader,
-  //       // Translates CSS into CommonJS
-  //       {
-  //         loader: "css-loader",
-  //         options: {
-  //           importLoaders: 1,
-  //           modules: true,
-  //         },
-  //       },
-  //       // Compiles Sass to CSS
-  //       "sass-loader",
-  //     ],
+  //   test: /\.s[ac]ss$/i,
+  //   use: [
+  //     // Creates `style` nodes from JS strings
+  //     options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+  //     {
+  //       loader: 'css-loader',
+  //       options: {
+  //         modules: {
+  //           auto: (resPath: string) => resPath.includes('.module.'),
+  //           localIdentName: options.isDev ? '[path][name]__[local]' : '[hash:base64:8]'
+  //         }
+  //       }
+  //     },
+  //     // Compiles Sass to CSS
+  //     'sass-loader'
+  //   ]
   // }
-  const styleLoader = {
-    test: /\.s[ac]ss$/i,
+  const cssLoader = {
+    test: /\.css$/,
     use: [
-      // Creates `style` nodes from JS strings
-      options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-      {
-        loader: 'css-loader',
-        options: {
-          modules: {
-            auto: (resPath: string) => resPath.includes('.module.'),
-            localIdentName: options.isDev ? '[path][name]__[local]' : '[hash:base64:8]'
-          }
-        }
-      },
-      // Compiles Sass to CSS
-      'sass-loader'
-    ]
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader",
+    ],
   }
   const fontloader = {
     test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
@@ -83,6 +73,7 @@ export function buildLoaders (options: BuildOptions): webpack.RuleSetRule[] {
   //     loader: 'url-loader'
   // }
   return [
-    typescriptLoader, styleLoader, fileloader, fontloader, svgLoader
+    typescriptLoader, cssLoader, fileloader, fontloader, svgLoader
   ]
 }
+  
