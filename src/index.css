@@ -6,7 +6,16 @@
 :root {
     --background-color:#1F2C32;
     --input-color:#28373E;
-    --primary-color:white
+    --secondary-color:#07E676;
+
+
+    --primary-color:white;
+    --secondary-text-color:gray;
+    --label-color:#76BCB0;
+
+    --passive-text-color:gray;
+    --button-color:#0D161B;
+    --button-active-color:"#131e24"
 }
 
 body{
@@ -16,6 +25,9 @@ body{
     color:var(--primary-color)
 }
 
+*{
+    box-sizing: border-box;
+}
 .wrapper{
     margin: 20px auto;
 }
