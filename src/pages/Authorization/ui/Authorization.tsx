@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import gif from 'public/whatsapp.gif'
 import Input from 'shared/ui/input'
 import defaultAvatar from 'public/default_avatar.png'
-import Button from 'shared/ui/button'
+import Button from 'shared/ui/button' 
 import TextArea from 'shared/ui/textArea'
 
 

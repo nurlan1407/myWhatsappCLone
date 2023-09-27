@@ -16,10 +16,10 @@ const TextArea: FC<InputProps> = (props) => {
     <>
       <label className="block mb-1 text-base font-light text-label" htmlFor={name}>{label}</label>
       <textarea
-        
+        rows={3}
         id={`${name}`}
         value={value}
-        className="block transition duration-150 ease-in-out outline-transparent rounded shadow bg-inputColor w-25 px-3 py-2 focus:outline-secondary focus:outline-2 outline"
+        className="resize-none w-full block transition duration-150 ease-in-out outline-transparent rounded shadow bg-inputColor px-2 py-2 focus:outline-secondary focus:outline-2 outline"
         name={name} 
       ></textarea>
     </>
