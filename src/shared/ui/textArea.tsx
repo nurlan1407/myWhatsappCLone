@@ -16,6 +16,7 @@ const TextArea: FC<InputProps> = (props) => {
     <>
       <label className="block mb-1 text-base font-light text-label" htmlFor={name}>{label}</label>
       <textarea
+      readOnly={true}
         rows={3}
         id={`${name}`}
         value={value}

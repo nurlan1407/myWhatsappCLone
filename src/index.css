@@ -6,8 +6,8 @@
 :root {
     --background-color:#1F2C32;
     --input-color:#28373E;
+    --input-active-color:#262d32;
     --secondary-color:#07E676;
-
 
     --primary-color:white;
     --secondary-text-color:gray;
@@ -15,7 +15,11 @@
 
     --passive-text-color:gray;
     --button-color:#0D161B;
-    --button-active-color:"#131e24"
+    --button-active-color:"#131e24";
+
+    --border-color:gray;
+
+    --dropdown-background: black
 }
 
 body{
