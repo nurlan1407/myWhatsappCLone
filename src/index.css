@@ -3,35 +3,65 @@
 @tailwind utilities;
 
 
-:root {
-    --background-color:#1F2C32;
-    --input-color:#28373E;
-    --input-active-color:#262d32;
-    --secondary-color:#07E676;
-
-    --primary-color:white;
-    --secondary-text-color:gray;
-    --label-color:#76BCB0;
-
-    --passive-text-color:gray;
-    --button-color:#0D161B;
-    --button-active-color:"#131e24";
-
-    --border-color:gray;
-
-    --dropdown-background: black
+/* CSS */
+.custom-outline {
+    outline: 2px solid transparent;
+    transition: outline 150ms ease-in-out;
 }
 
-body{
+/* Tailwind CSS with custom classes */
+@layer utilities {
+    .custom-outline {
+        outline: 2px solid transparent;
+        transition: outline 150ms ease-in-out;
+    }
+}
+
+
+:root {
+    --background-color: #1F2C32;
+    --input-color: #28373E;
+    --input-active-color: #262d32;
+    --secondary-color: #00A884;
+
+    --primary-color: white;
+    --secondary-text-color: gray;
+    --label-color: #76BCB0;
+
+    --passive-text-color: gray;
+    --button-color: #0D161B;
+    --button-active-color: "#131e24";
+
+    --border-color: gray;
+
+    --dropdown-background: black --header-height:50px;
+    --header-color: #111B21;
+    --boundary-color: #202C33;
+}
+
+body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    color:var(--primary-color)
+    color: var(--primary-color);
+    height: 100%;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
-.wrapper{
-    margin: 20px auto;
+
+#root {
+    min-height: 100%;
+}
+
+html,
+body,
+#root>div {
+    height: 100%
+}
+
+.wrapper {
+    height: 100%;
+    margin: auto 20px;
 }

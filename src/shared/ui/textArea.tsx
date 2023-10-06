@@ -6,8 +6,8 @@ interface InputProps {
   name: string,
   type: string,
   label: string,
-  value:string, 
-  onChange: (a: ChangeEvent<HTMLInputElement>) => void
+  value:string|undefined, 
+  onChange: (a: ChangeEvent<HTMLTextAreaElement>) => void
 }
 const TextArea: FC<InputProps> = (props) => {
   const { name, type, label, onChange, value } = props;
@@ -16,12 +16,12 @@ const TextArea: FC<InputProps> = (props) => {
     <>
       <label className="block mb-1 text-base font-light text-label" htmlFor={name}>{label}</label>
       <textarea
-      readOnly={true}
         rows={3}
         id={`${name}`}
         value={value}
         className="resize-none w-full block transition duration-150 ease-in-out outline-transparent rounded shadow bg-inputColor px-2 py-2 focus:outline-secondary focus:outline-2 outline"
-        name={name} 
+        name={name}
+        onChange={(e)=>{onChange(e)}}
       ></textarea>
     </>
 

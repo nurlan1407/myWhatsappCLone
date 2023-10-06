@@ -4,7 +4,7 @@ import IconClose from 'public/icons/icon_close.svg'
 
 
 interface PhotoLibraryProps{
-    onClose:(value:boolean)=>void,
+    onClose:()=>void,
     onSelect:()=>void
 }
 
@@ -17,7 +17,7 @@ const PhotoLibrary: FC<PhotoLibraryProps> = ({ onClose, onSelect }) => {
                 height={30} 
                 width={30} 
                 className='cursor-pointer'
-                onClick={()=>{onClose(false)}}
+                onClick={()=>{onClose()}}
             />
         </div>
         <div className='grid grid-cols-3 gap-2 w-[250px]'>

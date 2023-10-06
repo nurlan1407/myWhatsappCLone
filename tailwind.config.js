@@ -19,8 +19,14 @@ module.exports = {
         "buttonColor":"var(--button-color)",
         "buttonActiveColor":"var(--button-active-color)",
         "dropdownBackground":"var(--dropdown-background)",
-        "borderColor":"var(--border-color)"
+        "borderColor":"var(--border-color)",
+        "headerColor":"var(--header-color)",
+        "boundaryColor":"var(--boundary-color)"
+      },
+      spacing:{
+        '50px':'50px'
       }
+      
     }
   },
   variants: {},

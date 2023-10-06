@@ -8,7 +8,7 @@ interface buttonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
 const Button: FC<buttonProps> = ({ onClick,className,children }) => {
   return (
     <button onClick={onClick} className={`block outline outline-transparent transition duration-150 ease-in-out
-    m-auto mt-5 py-2.5 px-2.5 bg-buttonColor rounded text-base w-75 text-center text-secondaryText hover:bg-buttonActiveColor hover:text-primary hover:outline-2 hover:outline-secondary ${className}`}
+    m-auto py-2.5 px-2.5 bg-buttonColor rounded text-base w-75 text-center text-secondaryText hover:bg-buttonActiveColor hover:text-primary hover:outline-2 hover:outline-secondary ${className}`}
     >{children}
     </button>
   )
