@@ -14,10 +14,11 @@ export const getUserGoogle = async (access_token: string) => {
             }
         })
         const data = await response.json()
-        const { email, family_name, given_name, picture } = data
+        const { email, family_name, given_name, picture,tag } = data
         const user: User = {
+            tag:tag,
             displayName: `${given_name} ${family_name}`,
-            avatar: picture,
+            avatarUrl: picture,
             email: email,
             bio: ""
         }
@@ -31,10 +32,11 @@ export const login = createAsyncThunk<User, User,{rejectValue:ErrorResponse}>("u
     async(reqBody, thunkApi) =>{
         try{
             const reqUser:User = {
+                tag:reqBody.tag,
                 email:reqBody.email,
                 displayName:reqBody.displayName,
                 bio:reqBody.bio,
-                avatar:reqBody.avatar
+                avatarUrl:reqBody.avatarUrl
             }
             const response = await fetch('http://localhost:5001/user/login', {
                 method: "POST",
@@ -49,7 +51,7 @@ export const login = createAsyncThunk<User, User,{rejectValue:ErrorResponse}>("u
             if (!response.ok) {
                 return thunkApi.rejectWithValue({ msg: data.msg })
             }
-            const user:User = { displayName:data.displayName, email: data.email, avatar:data.avatar_url, bio:data.bio}
+            const user:User = { tag:data.tag,displayName:data.displayName, email: data.email, avatarUrl:data.avatar_url, bio:data.bio}
             if(response.status == 200) localStorage.setItem("access_token",data.access_token)
             return user
         }catch(e){
@@ -64,20 +66,21 @@ export const createProfile = createAsyncThunk<User, User, { rejectValue: ErrorRe
         try {
             console.log(reqBody);
             
-            const { avatar, displayName, email, bio } = reqBody
+            const { avatarUrl, displayName, email, bio } = reqBody
             var formData = new FormData()
             const reqUser:User = {
+                tag:reqBody.tag,
                 email:reqBody.email,
                 displayName:reqBody.displayName,
                 bio:reqBody.bio,
-                avatar:reqBody.avatar
+                avatarUrl:reqBody.avatarUrl
             }
-            if (avatar.startsWith('data:image/')) {
+            if (avatarUrl.startsWith('data:image/')) {
                 //it is a file image so i delete image url from requser (чтоб наверняка)
-                reqUser.avatar = ''
+                reqUser.avatarUrl = ''
                 const nameWithoutSpaces = displayName.replace(/\s/g, ''); // Removes all spaces
                 const fileName = nameWithoutSpaces + Date.now()
-                const avatarFile = dataURLtoFile(avatar, fileName)
+                const avatarFile = dataURLtoFile(avatarUrl, fileName)
                 formData.append("avatarFile", avatarFile)
                 //потому что пользователь добавил свой в формдату я убираю его с рек боди
             }
@@ -93,9 +96,10 @@ export const createProfile = createAsyncThunk<User, User, { rejectValue: ErrorRe
                 return thunkApi.rejectWithValue({ msg: data.msg })
             }
             const createdProfile:User ={
+                tag:data.tag,
                 displayName:data.displayName,
                 email:data.email,
-                avatar:data.avatarUrl,
+                avatarUrl:data.avatarUrl,
                 bio:data.bio
             }
         

@@ -21,10 +21,14 @@ module.exports = {
         "dropdownBackground":"var(--dropdown-background)",
         "borderColor":"var(--border-color)",
         "headerColor":"var(--header-color)",
-        "boundaryColor":"var(--boundary-color)"
+        "boundaryColor":"var(--boundary-color)",
+        "inputColor":"var(--input-color)"
       },
       spacing:{
         '50px':'50px'
+      },
+      backgroundImage:{
+        
       }
       
     }

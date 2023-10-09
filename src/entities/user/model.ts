@@ -1,7 +1,8 @@
 export interface User{
+    tag:string,
     displayName:string,
     email:string,
-    avatar:string,
+    avatarUrl:string,
     bio:string
 }
 

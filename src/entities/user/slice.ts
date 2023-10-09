@@ -18,13 +18,22 @@ const userSlice = createSlice({
             state.state = action.payload
         },
         setImage:(state, action: PayloadAction<string>)=>{
-            state.state!.avatar = action.payload
+            state.state!.avatarUrl = action.payload
         },
         setDisplayName:(state, action:PayloadAction<string>)=>{
             state.state!.displayName = action.payload
         },
         setBio:(state, action:PayloadAction<string>)=>{
             state.state!.bio = action.payload
+        },
+        setTag:(state, action:PayloadAction<string>)=>{
+            console.log(action.payload);
+            if(action.payload.startsWith('@')){
+                if( state.state!.tag.length < action.payload.length) state.state!.tag += action.payload.charAt(action.payload.length-1)
+                else state.state!.tag = action.payload
+            }else{
+                state.state!.tag = '@'+action.payload
+            }
         }
     },
     extraReducers:(builder)=>{
@@ -48,7 +57,6 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state,action)=>{
             state.status = 'idle'
             state.state = action.payload
-            
         })
         builder.addCase(login.rejected, (state,action)=>{
             state.status = 'rejected'
@@ -59,4 +67,4 @@ const userSlice = createSlice({
 
 export default userSlice
 
-export const {setUser, setImage, setDisplayName, setBio} = userSlice.actions;
+export const { setUser, setImage, setDisplayName, setTag, setBio } = userSlice.actions

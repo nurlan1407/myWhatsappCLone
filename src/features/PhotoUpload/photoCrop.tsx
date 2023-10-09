@@ -39,7 +39,7 @@ const PhotoCrop: FC<PhotoCropProps> = ({ onClose,setImage }) => {
             <div className='flex flex-col justify-center items-center w-full gap-5'>
                 <AvatarEditor
                     ref ={editorRef}
-                    image={state!.avatar}
+                    image={state!.avatarUrl}
                     border={50}
                     color={[255, 255, 255, 0.6]} // RGBA
                     scale={rangeValue/10}

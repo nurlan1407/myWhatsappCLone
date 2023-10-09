@@ -12,7 +12,7 @@ import PhotoUpload from 'features/PhotoUpload/iu/photoUpload'
 import TakePhoto from 'features/TakePhoto/ui/TakePhoto'
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
-import { setImage, setDisplayName, setBio  } from 'entities/user/slice'
+import { setImage, setDisplayName, setBio, setTag  } from 'entities/user/slice'
 import PhotoCrop from 'features/PhotoUpload/photoCrop'
 import { useNavigate } from 'react-router-dom'
 import { createProfile } from 'entities/user/api'
@@ -101,6 +101,7 @@ const Authorization: FC = ({ }) => {
         <div className='m-auto w-full flex justify-center gap-10 items-center py-3 border-box'>
           <div className='py-2'>
             <Input name={'Display Name'} type={"text"} label='Display Name' onChange={(e) => { dispatch(setDisplayName(e.target.value)) }} value={userInfo?.displayName} />
+            <Input name={'Tag'} type={"text"} label='Tag (@:..)' onChange={(e) => { dispatch(setTag(e.target.value)) }} value={userInfo?.tag } />
             <TextArea name={'Bio'} type={"text"} label='Bio' onChange={(e) => { dispatch(setBio(e.target.value))}} value={userInfo?.bio}></TextArea>
             <div className='mt-5'>
               <Button onClick={userRegister}>
@@ -130,7 +131,7 @@ const Authorization: FC = ({ }) => {
                 <span id='context-opener' className='text-base text-primary'>Add profile image</span>
               </div>
             }
-            <img id='context-opener' src={state.state?.avatar || defaultAvatar} referrerPolicy={'no-referrer'} className='rounded-full w-full h-full object-cover' />
+            <img id='context-opener' src={state.state?.avatarUrl || defaultAvatar} referrerPolicy={'no-referrer'} className='rounded-full w-full h-full object-cover' />
           </div>
         </div>
       </div>

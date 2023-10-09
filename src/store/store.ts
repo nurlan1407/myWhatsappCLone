@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import userSlice from 'entities/user/slice'
+import searchSlice from 'entities/search/slice'
 
 const store = configureStore({
     reducer:{
-        user:userSlice.reducer
+        user:userSlice.reducer,
+        search: searchSlice.reducer
     }
 })
 
